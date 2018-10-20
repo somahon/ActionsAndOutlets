@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  ActionsAndOutlets
-//
-//  Created by Shane O'Mahony on 20/10/2018.
-//
+
 
 import UIKit
 
