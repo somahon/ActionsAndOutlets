@@ -11,6 +11,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var descriptionArea: UITextView!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet var previousButton: UIView!
+    @IBOutlet var nextButton: UIView!
+    @IBOutlet weak var totalNumberOfSlidesLabel: UILabel!
     
     @IBAction func next(_ sender: Any) {
         if currentIndex + 1 < slides.count {
@@ -49,6 +52,7 @@ class ViewController: UIViewController {
         slides.append(slideOne)
         slides.append(slideTwo)
         slides.append(slideThree)
+        totalNumberOfSlidesLabel.text = String(slides.count)
         
         updateTextAreas(slideIndex: 0)
     }
