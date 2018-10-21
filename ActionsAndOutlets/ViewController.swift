@@ -14,29 +14,31 @@ class ViewController: UIViewController {
     @IBOutlet var previousButton: UIView!
     @IBOutlet var nextButton: UIView!
     @IBOutlet weak var totalNumberOfSlidesLabel: UILabel!
+    @IBOutlet weak var currentSlideIndexLabel: UILabel!
     
     @IBAction func next(_ sender: Any) {
         if currentIndex + 1 < slides.count {
             currentIndex = currentIndex + 1
-            updateTextAreas(slideIndex: currentIndex)
+            updateLabels(slideIndex: currentIndex)
         }
     }
     
     @IBAction func previous(_ sender: Any) {
         if currentIndex - 1 >= 0 {
             currentIndex = currentIndex - 1
-            updateTextAreas(slideIndex: currentIndex)
+            updateLabels(slideIndex: currentIndex)
         }
     }
     
-    func updateTextAreas(slideIndex: Int) {
+    func updateLabels(slideIndex: Int) {
+        //adjust index to offset 0 array index
+        currentSlideIndexLabel.text = String(currentIndex + 1)
         descriptionArea.text = slides[currentIndex].message
         authorLabel.text = slides[currentIndex].author
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         let slideOne = Slide(message:
             """
@@ -52,9 +54,9 @@ class ViewController: UIViewController {
         slides.append(slideOne)
         slides.append(slideTwo)
         slides.append(slideThree)
-        totalNumberOfSlidesLabel.text = String(slides.count)
         
-        updateTextAreas(slideIndex: 0)
+        totalNumberOfSlidesLabel.text = String(slides.count)
+        updateLabels(slideIndex: 0)
     }
 
 }
